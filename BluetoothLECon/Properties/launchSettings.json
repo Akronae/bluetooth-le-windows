@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "BluetoothLECon (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "BluetoothLECon (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

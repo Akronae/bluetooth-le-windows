@@ -1,0 +1,11 @@
+{
+  "script": {
+    "enableScriptNuGetReferences": true,
+    "defaultTargetFramework": "net7.0"
+  },
+  "FormattingOptions": {
+    "UseTabs": false,
+    "TabSize": 4,
+    "IndentationSize": 4
+  }
+}

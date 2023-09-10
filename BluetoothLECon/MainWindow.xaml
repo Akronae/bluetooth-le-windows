@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="BluetoothLECon.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BluetoothLECon"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Row="0" x:Name="AppTitleBar" VerticalAlignment="Top">
+            <TextBlock x:Name="AppTitle" Text="{x:Bind AppWindow.Title}" VerticalAlignment="Top" Margin="0,8,0,0" />
+        </Border>
+
+
+        <NavigationView x:Name="Nav" Grid.Row="1" PaneTitle="{x:Bind AppWindow.Title}" IsBackButtonVisible="Collapsed" IsSettingsVisible="False">
+            <NavigationView.MenuItems>
+                <NavigationViewItemHeader Content="Send &amp; Receive"/>
+                <NavigationViewItem Content="Keyboard" Tag="SamplePage2" x:Name="KeyboardMenuItem" SelectsOnInvoked="True">
+                    <NavigationViewItem.Icon>
+                        <SymbolIcon Symbol="Keyboard" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Content="Joystick" Tag="SamplePage3" x:Name="JoystickMenuItem">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE7C2;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+            </NavigationView.MenuItems>
+            <Frame>
+                <Grid Margin="12">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Text="Keyboard" FontSize="28" FontWeight="Bold" Margin="0,0,0,24" />
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+
+                        <Grid Grid.Row="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <local:BLEDeviceSelector x:Name="SelectedDevice" Grid.Column="0" Margin="0,0,12,0" />
+                                <ComboBox x:Name="SelectedServiceCombo" Grid.Column="1" PlaceholderText="Select a service" Opacity="0" SelectionChanged="SelectedServiceCombo_SelectionChanged" Margin="0,0,12,0" />
+                                <ComboBox x:Name="SelectedCharCombo" Grid.Column="2" PlaceholderText="Select a characteristic" Opacity="0" SelectionChanged="SelectedCharCombo_SelectionChanged" Margin="0,0,12,0" />
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <local:KeyboardView Visibility="Collapsed" x:Name="KeyboardView" Logs="{x:Bind Logs, Mode=TwoWay}" />
+                                <local:JoystickView Visibility="Collapsed" x:Name="JoystickView" />
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Frame>
+        </NavigationView>
+    </Grid>
+</Window>
+    
